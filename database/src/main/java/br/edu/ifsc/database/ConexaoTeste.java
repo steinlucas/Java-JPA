@@ -18,17 +18,14 @@ public class ConexaoTeste {
             //    con.close();
             //}
 
-        	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova", "aluno", "");
-        	//getConnection("jdbc:mysql://localhost:3306/prova?user=aluno");
-        	
-        	// bkp getConnection("jdbc:mysql://localhost:3306/prova", "aluno", "");
-        	
+        	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova?useTimezone=true&serverTimezone=UTC", "root", "aluno");
+        	        	
             //opção 2
-            //JDBCDataSource ds = new JDBCDataSource();
-            //ds.setDatabase("localhost");
-            //ds.setDatabase("prova");
-            //ds.setUser("");
-            //n = ds.getConnection();
+            JDBCDataSource ds = new JDBCDataSource();
+            ds.setDatabase("localhost");
+            ds.setDatabase("prova");
+            ds.setUser("aluno");
+            con = ds.getConnection();
             if (con != null) {
                 System.out.println("Conexão com DataSource criada com sucesso");
                 con.close();

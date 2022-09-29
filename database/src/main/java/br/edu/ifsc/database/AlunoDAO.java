@@ -45,7 +45,7 @@ public class AlunoDAO {
     }
 
     public List<Aluno> getAll() {
-        List<Aluno> resp = entityManager.createQuery("SELECT a FROM Aluno a").getResultList();
+        List<Aluno> resp = entityManager.createQuery("SELECT * FROM cliente").getResultList();
 
         return resp;
     }
