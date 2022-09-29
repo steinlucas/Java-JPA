@@ -9,23 +9,14 @@ public class ConexaoTeste {
 
     public static void main(String[] args) {
         try {
-            //opcao 1
-            //Class.forName("org.hsqldb.jdbc.JDBCDriver");
-
-            //Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/aulaifsc", "SA", "");
-            //if (con != null) {
-            //    System.out.println("Conexão criada com sucesso");
-            //    con.close();
-            //}
-
         	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova?useTimezone=true&serverTimezone=UTC", "root", "aluno");
-        	        	
-            //opção 2
+
             JDBCDataSource ds = new JDBCDataSource();
             ds.setDatabase("localhost");
             ds.setDatabase("prova");
             ds.setUser("aluno");
             con = ds.getConnection();
+            
             if (con != null) {
                 System.out.println("Conexão com DataSource criada com sucesso");
                 con.close();
