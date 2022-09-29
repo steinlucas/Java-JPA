@@ -1,3 +1,5 @@
+create database prova;
+
 create table procedimento(
 id_proc int primary key not null auto_increment,
 desc_proc varchar(250),

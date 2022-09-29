@@ -9,10 +9,6 @@ import br.edu.ifsc.database.entity.Aluno;
 import br.edu.ifsc.database.entity.Endereco;
 import br.edu.ifsc.database.entity.TipoAluno;
 
-/**
- *
- * @author renato
- */
 public class Teste {
 
     public static void main(String[] args) {
