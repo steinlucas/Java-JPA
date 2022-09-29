@@ -12,36 +12,24 @@ import br.edu.ifsc.database.entity.TipoAluno;
 public class Teste {
 
     public static void main(String[] args) {
-        Aluno a1 = new Aluno("Renato1", TipoAluno.POS);
-        Aluno a2 = new Aluno("Amanda2", TipoAluno.TECNICO);
-        Aluno a3 = new Aluno("Nathalia3", TipoAluno.GRADUACAO);
-        Endereco e1 = new Endereco("Rua Florianopolis", "10", "Blumenau");
-        Endereco e2 = new Endereco("Rua Jardim", "20", "Gaspar");
+        Cliente c1 = new Cliente(1, "Lucas", "47992843101", "12987634951");
+        Cliente c2 = new Cliente(2, "Stein", "47999999999", "15584653214");
+        Cliente c3 = new Cliente(3, "IFSC" , "47988888888", "12345678901");
+        
+        ClienteDAO dao = ClienteDAO.getInstance();
+        dao.save(c1);
+        dao.save(c2);
+        dao.save(c3);
 
-        a1.setEndereco(e1);
-        a2.setEndereco(e1);
-        a3.setEndereco(e2);
-
-        AlunoDAO dao = AlunoDAO.getInstance();
-        dao.save(a1);
-        dao.save(a2);
-        dao.save(a3);
-
-        System.out.println("Mostrando alunos cadastrados");
-        for (Aluno aluno : dao.getAll()) {
-            System.out.println(aluno);
+        System.out.println("Mostrando clientes cadastrados");
+        for (Cliente cliente : dao.getAll()) {
+            System.out.println(cliente);
         }
 
-        System.out.println("Alterando a cidade de todos os alunos");
-        for (Aluno aluno : dao.getAll()) {
-            aluno.getEndereco().setCidade("São Paulo");
-            dao.save(aluno);
-        }
-
-        System.out.println("Mostrando alunos");
-        System.out.println("Mostrando alunos cadastrados");
-        for (Aluno aluno : dao.getAll()) {
-            System.out.println(aluno);
+        System.out.println("Mostrando clientes");
+        System.out.println("Mostrando clientes cadastrados");
+        for (Cliente cliente : dao.getAll()) {
+            System.out.println(cliente);
         }
     }
 
