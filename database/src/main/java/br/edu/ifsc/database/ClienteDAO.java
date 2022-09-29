@@ -2,7 +2,6 @@
 package br.edu.ifsc.database;
 
 import br.edu.ifsc.database.util.EntityManagerUtil;
-import br.edu.ifsc.database.entity.Aluno;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -28,12 +27,12 @@ public class ClienteDAO {
         entityManager.getTransaction().commit();
     }
 
-    public Cliente getCliente(long _idCliente) throws Exception {
-    	Cliente cliente = entityManager.find(Cliente.class, _idCliente);
+    public Cliente getCliente(long idCliente) throws Exception {
+    	Cliente cliente = entityManager.find(Cliente.class, idCliente);
         if (cliente != null) {
             return cliente;
         }
-        throw new Exception(String.format("Aluno %s não encontrado", _idCliente));
+        throw new Exception(String.format("Cliente %s não encontrado", idCliente));
     }
 
     public List<Cliente> getAll() {

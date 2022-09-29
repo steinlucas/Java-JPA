@@ -1,10 +1,10 @@
 create database prova;
 
-create table procedimento(
-id_proc int primary key not null auto_increment,
-desc_proc varchar(250),
-valor_proc int(10),
-data_proc varchar(10)
+create table orcamento(
+id_orcamento int primary key not null auto_increment,
+desc_orcamento varchar(250),
+valor_orcamento int(10),
+data_orcamento varchar(10)
 );
 
 
@@ -20,13 +20,13 @@ cpf int (11) not null
 
 
 
-create table procedimento_cliente(
+create table orcamento_cliente(
 id_reg int primary key not null auto_increment,
-id_proc int,
+id_orcamento int,
 id_cliente int,
 
-FOREIGN KEY (id_proc)
-REFERENCES procedimento (id_proc),
+FOREIGN KEY (id_orcamento)
+REFERENCES orcamento (id_orcamento),
         
 FOREIGN KEY (id_cliente)
 REFERENCES cliente (id_cli)
