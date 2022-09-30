@@ -37,7 +37,7 @@ public class ClienteDAO {
     }
 
     public List<Cliente> getAll() {
-        List<Cliente> resp = entityManager.createQuery("SELECT * FROM cliente").getResultList();
+        List<Cliente> resp = entityManager.createQuery("SELECT C FROM Cliente C").getResultList();
 
         return resp;
     }

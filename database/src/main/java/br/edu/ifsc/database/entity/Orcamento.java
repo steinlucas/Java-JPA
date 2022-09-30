@@ -10,21 +10,21 @@ public class Orcamento {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idOrcamento;
+	private Long idOrcamento;
 	private int valor;
 	private String data;
 		
-	public Orcamento(int idOrcamento, int valor, String data) {
+	public Orcamento(Long idOrcamento, int valor, String data) {
 		this.setIdOrcamento(idOrcamento);
 		this.setValor(valor);
 		this.setData(data);
 	}
 
-	public int getIdOrcamento() {
+	public Long getIdOrcamento() {
 		return idOrcamento;
 	}
 
-	public void setIdOrcamento(int idOrcamento) {
+	public void setIdOrcamento(Long idOrcamento) {
 		this.idOrcamento = idOrcamento;
 	}
 

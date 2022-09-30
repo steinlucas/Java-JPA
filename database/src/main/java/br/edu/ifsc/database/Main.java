@@ -4,9 +4,7 @@
  * and open the template in the editor.
  */
 package br.edu.ifsc.database;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
+import org.apache.commons.lang3.StringUtils;
 import java.sql.SQLException;
 
 import br.edu.ifsc.database.entity.Cliente;
@@ -16,44 +14,63 @@ public class Main {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
     	
-    	Connection con;
-		try {
-			//Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova?useTimezone=true&serverTimezone=UTC", "root", "aluno");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    	
+        Cliente c1 = new Cliente();
+        c1.setIdCliente(null);
+        c1.setNome("Lucas");
+        c1.setTelefone("47992843101");
+        c1.setCpf("12987634951");
         
-        Cliente c1 = new Cliente(1, "Lucas", "47992843101", "12987634951");
-        Cliente c2 = new Cliente(2, "Stein", "47999999999", "15584653214");
-        Cliente c3 = new Cliente(3, "IFSC" , "47988888888", "12345678901");
+        Cliente c2 = new Cliente();
+        c2.setIdCliente(null);
+        c2.setNome("Stein");
+        c2.setTelefone("47999999999");
+        c2.setCpf("15584653214");
+        
+        Cliente c3 = new Cliente();
+        c2.setIdCliente(null);
+        c2.setNome("IFSC");
+        c2.setTelefone("47988888888");
+        c2.setCpf("12345678901");
         
         System.out.println("Cadastrando clientes:");
-        ClienteDAO dao = ClienteDAO.getInstance();
-        dao.save(c1);
-        dao.save(c2);
-        dao.save(c3);
+        ClienteDAO cdao = ClienteDAO.getInstance();
+        cdao.save(c1);
+        cdao.save(c2);
+        cdao.save(c3);
 
         System.out.println("Mostrando clientes cadastrados:");
-        for (Cliente cliente : dao.getAll()) {
-            System.out.println(cliente);
+        System.out.println("Código CPF          Nome");
+        for (Cliente cliente : cdao.getAll()) {
+        	System.out.print(cliente.getIdCliente());
+        	System.out.print(StringUtils.rightPad(Long.toString(cliente.getIdCliente()), 7));
+        	System.out.print(StringUtils.rightPad(cliente.getCpf(), 12));
+        	System.out.print(StringUtils.rightPad(cliente.getNome(), 45));
+        	System.out.println("");
         }
+            	
         
         System.out.println("Removendo clientes:");
-        dao.remove(c1);
-        dao.remove(c2);
-        dao.remove(c3);
+        cdao.remove(c1);
+        cdao.remove(c2);
+        cdao.remove(c3);
         
         System.out.println("Mostrando clientes cadastrados (vazio):");
-        for (Cliente cliente : dao.getAll()) {
-            System.out.println(cliente);
+        for (Cliente cliente : cdao.getAll()) {
+        	System.out.print(StringUtils.rightPad(Long.toString(cliente.getIdCliente()), 7));
+        	System.out.print(StringUtils.rightPad(cliente.getCpf(), 12));
+        	System.out.print(StringUtils.rightPad(cliente.getNome(), 45));
+        	System.out.println("");
         }
         
-        //Orcamento o1 = new Orcamento(1, 50, "47992843101", "12987634951");
-        //Orcamento o2 = new Orcamento(2, 100, "47999999999", "15584653214");
-        //Orcamento o3 = new Orcamento(3, "IFSC" , "47988888888", "12345678901");
-
+        Orcamento o1 = new Orcamento(null, 50, "01/10/2022");
+        Orcamento o2 = new Orcamento(null, 21, "28/04/2001");
+        Orcamento o3 = new Orcamento(null, 22, "28/04/2023");
+        
+        OrcamentoDAO odao = OrcamentoDAO.getInstance();
+        odao.save(o1);
+        odao.save(o2);
+        odao.save(o3);
     }
 
 }

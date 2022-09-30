@@ -11,23 +11,18 @@ public class Cliente {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idCliente;
+	private Long idCliente;
 	private String nome;
 	private String telefone;
 	private String cpf;
 	
-	public Cliente(int idCliente, String nome, String telefone, String cpf) {
-		this.idCliente = idCliente;
-		this.nome = nome;
-		this.telefone = telefone;
-		this.cpf = cpf;
-	}
+	public Cliente() {}
 
-	public int getIdCliente() {
+	public Long getIdCliente() {
 		return idCliente;
 	}
 
-	public void setIdCliente(int idCliente) {
+	public void setIdCliente(Long idCliente) {
 		this.idCliente = idCliente;
 	}
 
