@@ -5,6 +5,10 @@
  */
 package br.edu.ifsc.database;
 import org.apache.commons.lang3.StringUtils;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import br.edu.ifsc.database.entity.Cliente;
@@ -12,8 +16,7 @@ import br.edu.ifsc.database.entity.Orcamento;
 
 public class Main {
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-    	
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, IOException {
     	
         Cliente c1 = new Cliente();
         c1.setIdCliente(null);
@@ -39,21 +42,30 @@ public class Main {
         cdao.save(c2);
         cdao.save(c3);
 
+        FileWriter arqNome = new FileWriter("C:/Lucas-Stein/relatorio-geral.txt");
+        PrintWriter gravarArqNome = new PrintWriter(arqNome);
+        
         System.out.println("Mostrando clientes cadastrados:");
         System.out.println("Código   CPF          Nome");
+        gravarArqNome.printf("%s %s %s \r\n", "Código", "CPF", "Nome");
         for (Cliente cliente : cdao.getAll()) {
         	System.out.print(cliente.getIdCliente());
         	System.out.print(StringUtils.rightPad(Long.toString(cliente.getIdCliente()), 7));
         	System.out.print(StringUtils.rightPad(cliente.getCpf(), 12));
         	System.out.print(StringUtils.rightPad(cliente.getNome(), 45));
         	System.out.println("");
+        	
+        	System.out.println("Gravando em C:/Lucas-Stein/relatorio-geral.txt...");
+        	gravarArqNome.printf("%s %s %s \r\n", cliente.getIdCliente(), cliente.getCpf(), cliente.getNome());
         }
+        
+        //arqNome.close();
         
         System.out.println("Removendo clientes...");
         System.out.println("");
-        cdao.remove(c1);
-        cdao.remove(c2);
-        cdao.remove(c3);
+        //cdao.remove(c1);
+        //cdao.remove(c2);
+        //cdao.remove(c3);
         
         System.out.println("Mostrando clientes cadastrados (vazio):");
         for (Cliente cliente : cdao.getAll()) {
@@ -86,21 +98,24 @@ public class Main {
         odao.save(o3);
         
         System.out.println("Mostrando orçamentos cadastrados:");
-        System.out.println("Código Data       Valor");
+        System.out.println("Código Data          Valor");
+        gravarArqNome.printf("\r\n%s %s    %s \r\n", "Código", "Data", "Valor");
         for (Orcamento orcamento : odao.getAll()) {
         	System.out.print(orcamento.getIdOrcamento());
         	System.out.print(StringUtils.rightPad(Long.toString(orcamento.getIdOrcamento()), 5));
         	System.out.print(StringUtils.rightPad(orcamento.getData(), 11));
         	System.out.print(StringUtils.rightPad(Integer.toString(orcamento.getValor()), 10));
         	System.out.println("");
+        	System.out.println("Gravando em C:/Lucas-Stein/relatorio-geral.txt...");
+        	gravarArqNome.printf("%s    %s   %s \r\n", orcamento.getIdOrcamento(), orcamento.getData(), orcamento.getValor());
         }
         System.out.println("");
         
         System.out.println("Removendo orçamentos...");
         System.out.println("");
-        odao.remove(o1);
-        odao.remove(o2);
-        odao.remove(o3);
+        //odao.remove(o1);
+        //odao.remove(o2);
+        //odao.remove(o3);
         
         System.out.println("Mostrando orçamentos cadastrados (vazio):");
         System.out.println("Código Data       Valor");
@@ -110,7 +125,9 @@ public class Main {
         	System.out.print(StringUtils.rightPad(orcamento.getData(), 11));
         	System.out.print(StringUtils.rightPad(Integer.toString(orcamento.getValor()), 10));
         }
+        
         System.out.println("");
+        arqNome.close();
     }
 
 }
