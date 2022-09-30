@@ -14,11 +14,7 @@ public class Orcamento {
 	private int valor;
 	private String data;
 		
-	public Orcamento(Long idOrcamento, int valor, String data) {
-		this.setIdOrcamento(idOrcamento);
-		this.setValor(valor);
-		this.setData(data);
-	}
+	public Orcamento() { }
 
 	public Long getIdOrcamento() {
 		return idOrcamento;

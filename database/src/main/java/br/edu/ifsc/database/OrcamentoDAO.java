@@ -37,7 +37,7 @@ public class OrcamentoDAO {
     }
 
     public List<Orcamento> getAll() {
-        List<Orcamento> resp = entityManager.createQuery("SELECT * FROM orcamento").getResultList();
+        List<Orcamento> resp = entityManager.createQuery("SELECT O FROM Orcamento O").getResultList();
 
         return resp;
     }

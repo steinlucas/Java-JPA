@@ -41,7 +41,7 @@ public class ClienteDAO {
 
         return resp;
     }
-
+    
     public void remove(Cliente cliente) {
         entityManager.getTransaction().begin();
         entityManager.remove(cliente);
