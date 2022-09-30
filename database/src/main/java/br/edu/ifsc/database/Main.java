@@ -15,8 +15,8 @@ public class Main {
     	
     	Connection con;
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost/prova?useTimezone=true&serverTimezone=UTC", "root", "aluno");
+			//Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/prova?useTimezone=true&serverTimezone=UTC", "root", "aluno");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -38,21 +38,19 @@ public class Main {
         }
         
         System.out.println("Removendo clientes:");
-        //dao.remove(c1);
-        //dao.remove(c2);
-        //dao.remove(c3);
+        dao.remove(c1);
+        dao.remove(c2);
+        dao.remove(c3);
         
         System.out.println("Mostrando clientes cadastrados (vazio):");
         for (Cliente cliente : dao.getAll()) {
-            //System.out.println(cliente);
+            System.out.println(cliente);
         }
-
-        //System.out.println("Mostrando clientes");
-        //System.out.println("Mostrando clientes cadastrados");
         
-        //for (Cliente cliente : dao.getAll()) {
-        //    System.out.println(cliente);
-        //}
+        Orcamento o1 = new Orcamento(1, 50, "47992843101", "12987634951");
+        Orcamento o2 = new Orcamento(2, 100, "47999999999", "15584653214");
+        Orcamento o3 = new Orcamento(3, "IFSC" , "47988888888", "12345678901");
+
     }
 
 }
