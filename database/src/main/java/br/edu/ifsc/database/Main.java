@@ -50,6 +50,7 @@ public class Main {
         }
         
         System.out.println("Removendo clientes...");
+        System.out.println("");
         cdao.remove(c1);
         cdao.remove(c2);
         cdao.remove(c3);
@@ -60,31 +61,56 @@ public class Main {
         	System.out.print(StringUtils.rightPad(cliente.getCpf(), 12));
         	System.out.print(StringUtils.rightPad(cliente.getNome(), 45));
         	System.out.println("");
-        	System.out.println("");
         }
+        System.out.println("");
         
         Orcamento o1 = new Orcamento();
         o1.setIdOrcamento(null);
         o1.setValor(50);
         o1.setData("01/10/2022");
-        //Orcamento o2 = new Orcamento(null, 21, "28/04/2001");
-        //Orcamento o3 = new Orcamento(null, 22, "28/04/2023");
         
-        System.out.println("Cadastrando clientes...");
+        Orcamento o2 = new Orcamento();
+        o2.setIdOrcamento(null);
+        o2.setValor(21);
+        o2.setData("28/04/2001");
+        
+        Orcamento o3 = new Orcamento();
+        o3.setIdOrcamento(null);
+        o3.setValor(22);
+        o3.setData("28/04/2023");
+        
+        System.out.println("Cadastrando orçamentos...");
         OrcamentoDAO odao = OrcamentoDAO.getInstance();
         odao.save(o1);
-        //odao.save(o2);
-        //odao.save(o3);
+        odao.save(o2);
+        odao.save(o3);
         
         System.out.println("Mostrando orçamentos cadastrados:");
         System.out.println("Código Data       Valor");
         for (Orcamento orcamento : odao.getAll()) {
         	System.out.print(orcamento.getIdOrcamento());
         	System.out.print(StringUtils.rightPad(Long.toString(orcamento.getIdOrcamento()), 5));
-        	System.out.print(StringUtils.rightPad(orcamento.getData(), 10));
+        	System.out.print(StringUtils.rightPad(orcamento.getData(), 11));
         	System.out.print(StringUtils.rightPad(Integer.toString(orcamento.getValor()), 10));
         	System.out.println("");
         }
+        System.out.println("");
+        
+        System.out.println("Removendo orçamentos...");
+        System.out.println("");
+        odao.remove(o1);
+        odao.remove(o2);
+        odao.remove(o3);
+        
+        System.out.println("Mostrando orçamentos cadastrados (vazio):");
+        System.out.println("Código Data       Valor");
+        for (Orcamento orcamento : odao.getAll()) {
+        	System.out.print(orcamento.getIdOrcamento());
+        	System.out.print(StringUtils.rightPad(Long.toString(orcamento.getIdOrcamento()), 5));
+        	System.out.print(StringUtils.rightPad(orcamento.getData(), 11));
+        	System.out.print(StringUtils.rightPad(Integer.toString(orcamento.getValor()), 10));
+        }
+        System.out.println("");
     }
 
 }
