@@ -1,6 +1,7 @@
 
 package br.edu.ifsc.database;
 
+import br.edu.ifsc.database.entity.Orcamento;
 import br.edu.ifsc.database.util.EntityManagerUtil;
 import java.util.List;
 import javax.persistence.EntityManager;

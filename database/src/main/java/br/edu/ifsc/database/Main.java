@@ -9,6 +9,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import br.edu.ifsc.database.entity.Cliente;
+import br.edu.ifsc.database.entity.Orcamento;
+
 public class Main {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
@@ -47,9 +50,9 @@ public class Main {
             System.out.println(cliente);
         }
         
-        Orcamento o1 = new Orcamento(1, 50, "47992843101", "12987634951");
-        Orcamento o2 = new Orcamento(2, 100, "47999999999", "15584653214");
-        Orcamento o3 = new Orcamento(3, "IFSC" , "47988888888", "12345678901");
+        //Orcamento o1 = new Orcamento(1, 50, "47992843101", "12987634951");
+        //Orcamento o2 = new Orcamento(2, 100, "47999999999", "15584653214");
+        //Orcamento o3 = new Orcamento(3, "IFSC" , "47988888888", "12345678901");
 
     }
 

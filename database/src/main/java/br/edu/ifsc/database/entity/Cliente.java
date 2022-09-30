@@ -1,4 +1,4 @@
-package br.edu.ifsc.database;
+package br.edu.ifsc.database.entity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
